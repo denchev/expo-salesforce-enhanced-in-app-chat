@@ -9,14 +9,15 @@ public class SalesforceEnhancedInAppChatModule: Module {
 
         AsyncFunction("open") { (promise: Promise) in
             let conversationID = UUID()
+
+            let url = Bundle.main.object(forInfoDictionaryKey: "SFInAppChatUrl") as? String ?? "DEFAULT_URL"
             
-            guard let serviceAPIURL = URL(string: "URL_TO_MY_SERVICE_API") else {
+            guard let serviceAPIURL = URL(string: url) else {
                 promise.reject("INVALID_URL", "Invalid URL")
                 return
             }
 
             let organizationId = Bundle.main.object(forInfoDictionaryKey: "SFInAppChatOrganizationId") as? String ?? "DEFAULT_ORG_ID"
-            let url = Bundle.main.object(forInfoDictionaryKey: "SFInAppChatUrl") as? String ?? "DEFAULT_URL"
             let developerName = Bundle.main.object(forInfoDictionaryKey: "SFInAppChatDeveloperName") as? String ?? "DEFAULT_DEVELOPER_NAME"
 
             let config = UIConfiguration(serviceAPI: serviceAPIURL,
