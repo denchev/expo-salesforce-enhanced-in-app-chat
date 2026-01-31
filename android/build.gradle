@@ -1,0 +1,16 @@
+plugins {
+  id 'com.android.library'
+  id 'expo-module-gradle-plugin'
+}
+
+android {
+  namespace "expo.modules.salesforceenhancedinappchat"
+  defaultConfig {
+    versionCode 17
+    versionName '1.10.2'
+  }
+}
+
+dependencies {
+  implementation 'com.salesforce.service:messaging-inapp-ui:1.10.2'
+} 
