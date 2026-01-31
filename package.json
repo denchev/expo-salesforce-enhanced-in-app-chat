@@ -3,6 +3,15 @@
   "version": "1.0.0",
   "description": "Wrapper around Salesforce Enhanced In-App Chat SDK for Expo apps.",
   "homepage": "https://github.com/denchev/expo-salesforce-enhanced-in-app-chat#readme",
+  "keywords": [
+    "expo",
+    "react-native",
+    "salesforce",
+    "in-app chat",
+    "enhanced in-app chat",
+    "sdk",
+    "wrapper"
+  ],
   "bugs": {
     "url": "https://github.com/denchev/expo-salesforce-enhanced-in-app-chat/issues"
   },
@@ -13,7 +22,17 @@
   "license": "ISC",
   "author": "Marush Denchev",
   "type": "commonjs",
-  "main": "index.js",
+  "main": "build/index.js",
+  "files": [
+    "/android/**/*",
+    "/build/**/*",
+    "/ios/**/*",
+    "/plugin/build/**/*",
+    "/app.plugin.js",
+    "/package.json",
+    "/README.md",
+    "/expo-module.config.json"
+  ],
   "scripts": {
     "build": "expo-module build",
     "clean": "expo-module clean",
@@ -22,7 +41,17 @@
     "prepublishOnly": "expo-module prepublishOnly",
     "expo-module": "expo-module"
   },
+  "dependencies": {},
   "devDependencies": {
-    "expo-module-scripts": "^5.0.8"
+    "expo-module-scripts": "^5.0.8",
+    "expo": "^54.0.10"
+  },
+  "peerDependencies": {
+    "expo": ">=54.0.10"
+  },
+  "peerDependenciesMeta": {
+    "expo": {
+      "optional": true
+    }
   }
 }
