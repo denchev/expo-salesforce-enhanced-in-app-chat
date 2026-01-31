@@ -2,6 +2,8 @@ import {
   createRunOncePlugin,
 } from 'expo/config-plugins';
 import { withAndroidConfiguration } from './withAndroid';
+import { withIosConfiguration } from './withIos';
+
 const pkg = require('../../package.json');
 
 const withSalesforceEnhancedInAppChat = (config: any, props: {
@@ -10,6 +12,7 @@ const withSalesforceEnhancedInAppChat = (config: any, props: {
     DeveloperName: string;
 }) => {
   config = withAndroidConfiguration(config, props);
+  config = withIosConfiguration(config, props);
   return config;
 };
 
