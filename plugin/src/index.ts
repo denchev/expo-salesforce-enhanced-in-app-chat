@@ -4,8 +4,12 @@ import {
 import { withAndroidConfiguration } from './withAndroid';
 const pkg = require('../../package.json');
 
-const withSalesforceEnhancedInAppChat = (config: any) => {
-  config = withAndroidConfiguration(config, {} as any);
+const withSalesforceEnhancedInAppChat = (config: any, props: {
+    OrganizationId: string;
+    Url: string;
+    DeveloperName: string;
+}) => {
+  config = withAndroidConfiguration(config, props);
   return config;
 };
 

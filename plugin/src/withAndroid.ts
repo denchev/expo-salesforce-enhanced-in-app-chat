@@ -1,6 +1,14 @@
-import { type ConfigPlugin, withProjectBuildGradle, withAppBuildGradle } from 'expo/config-plugins';
+import { ConfigPlugin, withProjectBuildGradle, withAppBuildGradle, withStringsXml, AndroidConfig } from 'expo/config-plugins';
+import { mergeContents } from '@expo/config-plugins/build/utils/generateCode';
 
-export const withAndroidConfiguration: ConfigPlugin<{}> = (config, props) => {
+export const withAndroidConfiguration: ConfigPlugin<{
+  OrganizationId: string;
+  Url: string;
+  DeveloperName: string;
+}> = (config, props) => {
+
+config = withConfiguration(config, props);
+
   // Add project-level maven repo to android/build.gradle
   config = withProjectBuildGradle(config, (config) => {
     const repoLine = "maven { url 'https://s3.amazonaws.com/inapp.salesforce.com/public/android' }";
@@ -64,8 +72,32 @@ export const withAndroidConfiguration: ConfigPlugin<{}> = (config, props) => {
     }
 
     config.modResults.contents = contents;
+    
+   
+
     return config;
   });
 
   return config;
 };
+
+const withConfiguration: ConfigPlugin<{
+    OrganizationId: string;
+    Url: string;
+    DeveloperName: string;
+}> = (config, props) => {
+    return withStringsXml(config, config => {
+      // Helper to add string.xml JSON items or overwrite existing items with the same name.
+      config.modResults = AndroidConfig.Strings.setStringItem(
+        [
+          // XML represented as JSON
+          { $: { name: 'expo_salesforceenhancedinappchat_organization_id', translatable: 'false' }, _: props.OrganizationId },
+          { $: { name: 'expo_salesforceenhancedinappchat_url', translatable: 'false' }, _: props.Url },
+          { $: { name: 'expo_salesforceenhancedinappchat_developer_name', translatable: 'false' }, _: props.DeveloperName },
+        ],
+        config.modResults
+      );
+    
+    return config;
+  });
+}
