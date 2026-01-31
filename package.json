@@ -1,7 +1,7 @@
 {
   "name": "expo-salesforce-enhanced-in-app-chat",
   "version": "1.0.0",
-  "description": "",
+  "description": "Wrapper around Salesforce Enhanced In-App Chat SDK for Expo apps.",
   "homepage": "https://github.com/denchev/expo-salesforce-enhanced-in-app-chat#readme",
   "bugs": {
     "url": "https://github.com/denchev/expo-salesforce-enhanced-in-app-chat/issues"
@@ -11,7 +11,7 @@
     "url": "git+https://github.com/denchev/expo-salesforce-enhanced-in-app-chat.git"
   },
   "license": "ISC",
-  "author": "",
+  "author": "Marush Denchev",
   "type": "commonjs",
   "main": "index.js",
   "scripts": {
