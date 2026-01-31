@@ -15,9 +15,13 @@ public class SalesforceEnhancedInAppChatModule: Module {
                 return
             }
 
+            let organizationId = Bundle.main.object(forInfoDictionaryKey: "SFInAppChatOrganizationId") as? String ?? "DEFAULT_ORG_ID"
+            let url = Bundle.main.object(forInfoDictionaryKey: "SFInAppChatUrl") as? String ?? "DEFAULT_URL"
+            let developerName = Bundle.main.object(forInfoDictionaryKey: "SFInAppChatDeveloperName") as? String ?? "DEFAULT_DEVELOPER_NAME"
+
             let config = UIConfiguration(serviceAPI: serviceAPIURL,
-                                        organizationId: "ORG_ID",
-                                        developerName: "API_NAME_OF_DEPLOYMENT",
+                                        organizationId: organizationId,
+                                        developerName: developerName,
                                         conversationId: conversationID)
 
             DispatchQueue.main.async {
