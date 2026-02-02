@@ -39,19 +39,6 @@ config = withConfiguration(config, props);
   config = withAppBuildGradle(config, async (config) => {
     let { contents } = config.modResults;
 
-    const dependency =
-      "implementation 'com.salesforce.service:messaging-inapp-ui:1.10.2'";
-
-    // Check if dependency is already added
-    if (!contents.includes("com.salesforce.service:messaging-inapp-ui")) {
-      // Find the dependencies { section and add implementation
-      const dependenciesRegex = /(dependencies\s*\{)/;
-
-      if (dependenciesRegex.test(contents)) {
-        contents = contents.replace(dependenciesRegex, `$1\n    ${dependency}`);
-      }
-    }
-
     // Add packaging configuration to android section
     if (!contents.includes('excludes += "META-INF/versions/**"')) {
       const androidSectionRegex = /(android\s*\{[^}]*?namespace[^}]*?\n)/;
@@ -73,8 +60,6 @@ config = withConfiguration(config, props);
 
     config.modResults.contents = contents;
     
-   
-
     return config;
   });
 

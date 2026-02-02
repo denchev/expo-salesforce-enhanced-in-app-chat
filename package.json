@@ -1,6 +1,6 @@
 {
   "name": "expo-salesforce-enhanced-in-app-chat",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Wrapper around Salesforce Enhanced In-App Chat SDK for Expo apps.",
   "homepage": "https://github.com/denchev/expo-salesforce-enhanced-in-app-chat#readme",
   "keywords": [

@@ -9,6 +9,10 @@ android {
     versionCode 17
     versionName '1.10.2'
   }
+  buildFeatures {
+      viewBinding true
+      dataBinding true
+  }
 }
 
 dependencies {
