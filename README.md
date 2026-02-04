@@ -1,6 +1,6 @@
 # Salesforce Enhanced In App Chat for Expo
 
-This module creates a drop-in solution for integration of Salesforce Enhanced In App Chat. Install it via npm, update plugins configuration and then trigger then chat from within the React parts of your Expo app.
+This module creates a drop-in solution for integration of Salesforce Enhanced In App Chat. Install it via npm, update plugins configuration and then trigger the chat from within the React parts of your Expo app.
 
 Configuration (in `app.json`, `app.plugin.js` or similar):
 
@@ -28,7 +28,8 @@ const NativeModule = requireNativeModule('SalesforceEnhancedInAppChatModule');
 NativeModule.open();
 ```
 
-Notes:
+# Notes:
+
 The following repos have been used for inspiration
 - https://github.com/JorFlux/react-native-salesforce-messaging-nitro
 - https://github.com/allboatsrise/expo-marketingcloudsdk
@@ -42,4 +43,4 @@ Useful Expo documentation
 - https://docs.expo.dev/config-plugins/development-for-libraries/
 - https://docs.expo.dev/modules/overview/
 
-I used multiple AI tools to help me with Kotlin and Swift. I must single out Gemini. It was helpless with Swift module but overall helped a lot!
+I used multiple AI tools to help me with Kotlin and Swift. I must single out Gemini. It was helpless with Swift code but overall helped a lot!
