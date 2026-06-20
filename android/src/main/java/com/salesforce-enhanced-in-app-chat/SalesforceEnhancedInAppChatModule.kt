@@ -17,12 +17,13 @@ class SalesforceEnhancedInAppChatModule : Module() {
     override fun definition() = ModuleDefinition {
         Name("SalesforceEnhancedInAppChatModule")
 
-        AsyncFunction("open") {
-            // Generate a random conversation ID
-            // (But be sure to use the SAME conversation ID if you want
-            // to continue this conversation across app restarts or
-            // across devices!)
-            val conversationID = UUID.randomUUID()
+        AsyncFunction("open") { conversationId: String? ->
+            val trimmedConversationId = conversationId?.trim().orEmpty()
+            val conversationID = try {
+                if (trimmedConversationId.isEmpty()) UUID.randomUUID() else UUID.fromString(trimmedConversationId)
+            } catch (_: IllegalArgumentException) {
+                UUID.randomUUID()
+            }
 
             val context = appContext.reactContext ?: return@AsyncFunction null // Early return if context is null
             val res = context.resources

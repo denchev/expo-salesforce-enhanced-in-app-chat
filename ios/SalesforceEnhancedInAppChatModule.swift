@@ -7,8 +7,9 @@ public class SalesforceEnhancedInAppChatModule: Module {
     public func definition() -> ModuleDefinition {
         Name("SalesforceEnhancedInAppChatModule")
 
-        AsyncFunction("open") { (promise: Promise) in
-            let conversationID = UUID()
+        AsyncFunction("open") { (conversationId: String?, promise: Promise) in
+            let trimmedConversationId = conversationId?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
+            let conversationID = UUID(uuidString: trimmedConversationId) ?? UUID()
 
             let url = Bundle.main.object(forInfoDictionaryKey: "SFInAppChatUrl") as? String ?? "DEFAULT_URL"
             
